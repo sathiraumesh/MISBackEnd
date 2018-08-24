@@ -2,30 +2,17 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const drugService= require("./services/drug-service");
 const authService = require("./services/authentication-service");
-const mongoose = require("mongoose")
-const cors = require("cors");
-
-
-
-mongoose.connect("mongodb://localhost:27017/test",err=>{
-    if(err){
-        console.error(err);
-    }
-    else{
-        console.log("connected to the data base sucessfully");
-    }
-
-});
-
-
-
+const db = require("./lib/db");
 const app = express();
+const config =require("./config.json")[app.get("env")];
 
 
+
+db.connect(config.mongoUrl);
 
 app.use(bodyParser.json());
 
-// routing the services
+// routing to services services
 app.use("/api/drugs",drugService);
 app.use("/api/authenticate",authService);
 

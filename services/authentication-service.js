@@ -12,11 +12,9 @@ router.get("/", isTokenEnsured, (req, res) => {
     res.json("route is protected");
 });
 
-
+// authenticating users
 router.post("/", (req, res) => {
     userData = req.body;
-    console.log(userData);
-
 
     User.findOne({ username: userData.username }, (err, user) => {
         if (err) {
@@ -30,19 +28,25 @@ router.post("/", (req, res) => {
         else if (user) {
             if (user.password !== userData.password) {
                 res.json({ success: false, message: "Wrong password" });
-            }else{
+            } 
+            
+            else {
                 const token = jwt.sign(user.username, "sectertley");
-                res.json({"token":token,
-                            message:" "});
+                res.json({
+                    "token": token,
+                    message: " "
+                });
             }
-
-           
         }
 
 
 
     });
 
+});
+
+router.use((req,res)=>{
+    res.sendStatus(404)  
 });
 
 module.exports = router;

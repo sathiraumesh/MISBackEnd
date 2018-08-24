@@ -5,15 +5,21 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test node node_modules/.bin/mocha --reporter spec test/unit/"
   },
   "author": "sathira and ruchira",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "cors": "^2.8.4",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.10",
     "mongoose": "^5.2.9"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "should": "^13.2.3",
+    "sinon": "^6.1.5",
+    "validator": "^10.7.0"
   }
 }
