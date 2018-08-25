@@ -1,4 +1,4 @@
-module.exports.isTokenEnsured = (req, res, next) => {
+module.exports.isTokenEnsured =function(req, res, next) {
     const bearerHeader = req.headers['authorization'];
 
     if (typeof bearerHeader !== "undefined") {

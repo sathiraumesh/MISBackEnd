@@ -1,52 +1,47 @@
-const express = require("express");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
-const isTokenEnsured = require("../handlers").isTokenEnsured;
-
-const router = express.Router();
 
 
 
-
-router.get("/", isTokenEnsured, (req, res) => {
-    res.json("route is protected");
-});
-
-// authenticating users
-router.post("/", (req, res) => {
+authenticateUsers = function (req, res, next) {
     userData = req.body;
 
-    User.findOne({ username: userData.username }, (err, user) => {
+    User.findOne({ username: userData.username }, function (err, user) {
         if (err) {
-            return err;
+            return next(err);
         }
-
         if (!user) {
-            res.json({ success: false, message: "Invalid Username" });
+            res.status(403);
+            res.send({ errors: ["invalid username or password"] });
         }
 
-        else if (user) {
-            if (user.password !== userData.password) {
-                res.json({ success: false, message: "Wrong password" });
-            } 
-            
-            else {
-                const token = jwt.sign(user.username, "sectertley");
-                res.json({
-                    "token": token,
-                    message: " "
-                });
-            }
+        if (user) {
+            user.checkPassword(userData.password, function (err, isMatch) {
+
+
+                if (err) {
+                    res.send("error");
+                    return next(err);
+                }
+
+                if (isMatch) {
+                    const token = jwt.sign(user.username, "sectertley");
+                    res.status(200);
+                    res.send({ token: token });
+
+                } else {
+                    res.status(403);
+                    res.send({ errors: ["invalid username or password"] });
+                }
+            });
         }
 
 
 
     });
+}
 
-});
+module.exports.authenticateUsers = authenticateUsers;
 
-router.use((req,res)=>{
-    res.sendStatus(404)  
-});
 
-module.exports = router;
+
