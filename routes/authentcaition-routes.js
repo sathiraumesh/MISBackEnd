@@ -1,6 +1,5 @@
 const express = require("express");
 const authenticationService= require("../services/authentication-service");
-const isTokenEnsured = require("../handlers").isTokenEnsured;
 
 const router = express.Router();
 
@@ -11,8 +10,6 @@ const router = express.Router();
 // authenticating users
 router.post("/", authenticationService.authenticateUsers);
 
-router.use(function(req, res){
 
-});
 
 module.exports = router;

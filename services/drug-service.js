@@ -1,21 +1,8 @@
-const User = require("../models/user");
-const jwt = require("jsonwebtoken");
 
+getDrugs=function(req,res,next){
+    res.status(200);
+    res.send({drugList:"list"});
+}
 
+module.exports=getDrugs;
 
-
-
-router.get("/",isTokenEnsured,function(req,res){
-    jwt.verify(req.token,"sectertley",function(err,data){
-        if(err){
-            res.sendStatus(403);
-        }
-        else{
-            res.sendStatus(200);
-            res.json("hi");
-        }
-    });
-   
-});
-
-module.exports= router;
