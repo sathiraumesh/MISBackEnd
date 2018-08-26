@@ -1,5 +1,5 @@
 const express = require("express");
-const authenticationService= require("../services/authentication-service");
+const authControll= require("../controllers/authentication-controller");
 
 const router = express.Router();
 
@@ -8,7 +8,7 @@ const router = express.Router();
 // });
 
 // authenticating users
-router.post("/", authenticationService.authenticateUsers);
+router.post("/", authControll.authenticateUsers);
 
 
 

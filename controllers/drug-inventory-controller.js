@@ -4,5 +4,5 @@ getDrugs=function(req,res,next){
     res.send({drugList:"list"});
 }
 
-module.exports=getDrugs;
+module.exports.getDrugs=getDrugs;
 

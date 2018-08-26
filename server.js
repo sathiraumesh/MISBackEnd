@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const drugService= require("./routes/drug-inventory-routes");
-const authService = require("./routes/authentcaition-routes");
+const drugInService= require("./services/drug-inventory-service")
+const authService = require("./services/authentcaition-service");
 const db = require("./lib/db");
 const app = express();
 const config =require("./config.json")[app.get("env")];
@@ -13,7 +13,7 @@ db.connect(config.mongoUrl);
 app.use(bodyParser.json());
 
 // routing to services services
-app.use("/api/drugs",drugService);
+app.use("/api/drugs",drugInService);
 app.use("/api/authenticate",authService);
 
 
