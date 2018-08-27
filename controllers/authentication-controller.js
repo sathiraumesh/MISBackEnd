@@ -17,20 +17,15 @@ authenticateUsers = function (req, res, next) {
 
         if (user) {
             user.checkPassword(userData.password, function (err, isMatch) {
-
-
                 if (err) {
-                    res.send("error");
+                    res.send({errors:["internal server error"]});
                     return next(err);
                 }
 
                 if (isMatch) {
                     const token = jwt.sign({ username: user.username, type: user.type }, SECRET_KEY);
                     res.status(200);
-                    res.send({
-                        token: token,
-                        type: user.type
-                    });
+                    res.send({token:token});
 
                 } else {
                     res.status(403);
@@ -56,7 +51,7 @@ isTokenEnsured = function (req, res, next) {
     }
     else {
         res.status(403);
-        res.send({error:"unauthorized"});
+        res.send({ error: "unauthorized" });
     }
 }
 
