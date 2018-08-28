@@ -4,7 +4,9 @@ const bcrypt= require("bcrypt-nodejs");
 const userSchema = new mongoose.Schema({
     username:{type:String,required:true,unique:true},
     password:{type:String,required:true},
-    type:{type:String,required:true}
+    role:{type:Number,required:true},
+
+
 });
 
 userSchema.methods.checkPassword=function(guess,done){

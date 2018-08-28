@@ -23,7 +23,7 @@ authenticateUsers = function (req, res, next) {
                 }
 
                 if (isMatch) {
-                    const token = jwt.sign({ username: user.username, type: user.type }, SECRET_KEY);
+                    const token = jwt.sign({ username: user.username,role:user.role }, SECRET_KEY);
                     res.status(200);
                     res.send({token:token});
 
@@ -69,11 +69,24 @@ authorizeUser = function (req, res, next) {
 
 }
 
+userRoles={
+    guest:1,
+    admin:2
+}
+
+accessLevels={
+    guest:userRoles.guest|userRoles.admin,
+    admin:userRoles.admin
+}
+
+
 
 
 module.exports.authenticateUsers = authenticateUsers;
 module.exports.isTokenEnsured = isTokenEnsured;
 module.exports.authorizeUser = authorizeUser;
+module.exports.userRoles=userRoles;
+
 
 
 
