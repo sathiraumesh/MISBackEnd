@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const drugInService= require("./services/drug-inventory-service")
 const authService = require("./services/authentcaition-service");
+const userService = require("./services/user-service");
 const db = require("./lib/db");
 const app = express();
 const config =require("./config.json")[app.get("env")];
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 // routing to services services
 app.use("/api/drugs",drugInService);
 app.use("/api/authenticate",authService);
+app.use("/api/user",userService);
 
 
 
