@@ -9,9 +9,9 @@ const router = express.Router();
 //     res.status(200);
 //     res.send({"sathira":"umesh"});
 // });
-router.get("/",userController.getUsers);
+router.get("/", userController.getUsers);
 router.get("/:userid");
-router.post("/",userController.addUser);
+router.post("/", userController.addUser);
 
 
 module.exports = router;
