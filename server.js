@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 // routing to services services
 app.use("/api/drugs",drugInService);
 app.use("/api/authenticate",authService);
-app.use("/api/user",userService);
+app.use("/api/users",userService);
 
 
 

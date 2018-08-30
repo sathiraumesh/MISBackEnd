@@ -2,7 +2,7 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const SECRET_KEY = "sathira";
 
-
+// autheticate users 
 authenticateUsers = function (req, res, next) {
     userData = req.body;
 
@@ -39,6 +39,10 @@ authenticateUsers = function (req, res, next) {
     });
 }
 
+module.exports.authenticateUsers = authenticateUsers;
+
+
+// function for ensuring the token is recidved as with the header of authorization and the token prefixed with the bearer
 
 isTokenEnsured = function (req, res, next) {
     const bearerHeader = req.headers['authorization'];
@@ -55,7 +59,9 @@ isTokenEnsured = function (req, res, next) {
     }
 }
 
+module.exports.isTokenEnsured = isTokenEnsured;
 
+//function for verification of the token
 authorizeUser = function (req, res, next) {
     jwt.verify(req.token, SECRET_KEY, function (err, data) {
         if (err) {
@@ -68,6 +74,10 @@ authorizeUser = function (req, res, next) {
     });
 
 }
+
+module.exports.authorizeUser = authorizeUser;
+
+
 
 userRoles={
     guest:1,
@@ -82,9 +92,7 @@ accessLevels={
 
 
 
-module.exports.authenticateUsers = authenticateUsers;
-module.exports.isTokenEnsured = isTokenEnsured;
-module.exports.authorizeUser = authorizeUser;
+
 module.exports.userRoles=userRoles;
 
 
