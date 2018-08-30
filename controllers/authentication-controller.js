@@ -23,7 +23,7 @@ authenticateUsers = function (req, res, next) {
                 }
 
                 if (isMatch) {
-                    const token = jwt.sign({ username: user.username,role:user.role }, SECRET_KEY);
+                    const token = jwt.sign({ username: user.username,role:user.role,id:user._id }, SECRET_KEY);
                     res.status(200);
                     res.send({token:token});
 

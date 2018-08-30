@@ -1,17 +1,17 @@
 const express = require("express");
 const userController = require("../controllers/user-controller");
-const User = require("../models/user");
+
 
 
 const router = express.Router();
-
-// router.get("/",function(req,res,next){
-//     res.status(200);
-//     res.send({"sathira":"umesh"});
-// });
+// api call for getting the list of users of the system
 router.get("/",userController.getUsers);
-router.get("/:userid");
+// api call for getting a single user of the system
+router.get("/:id",userController.getUser);
+// api cal for creating a user
 router.post("/",userController.addUser);
+// api call for deleting a user
+router.delete("/",userController.deleteUser);
 
 
 module.exports = router;
