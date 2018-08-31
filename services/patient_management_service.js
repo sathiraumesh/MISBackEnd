@@ -4,6 +4,6 @@ const patientController = require("../controllers/patient_management_controller"
 
 const route = express.Router();
 
-route.get("/", authController.isTokenEnsured, authController.authorizeUser, patientController);
+route.post("/", patientController.addPatient);
 
 module.exports = route;

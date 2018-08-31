@@ -16,7 +16,6 @@ const userSchema = new mongoose.Schema({
 });
 
 
-
 userSchema.pre("save", function (done) {
     var user = this;
     bcrypt.genSalt(SALT_FACTOR, function (err, salt) {
@@ -34,8 +33,6 @@ userSchema.pre("save", function (done) {
         });
     });
 });
-
-
 
 
 userSchema.methods.checkPassword = function (guess, done) {

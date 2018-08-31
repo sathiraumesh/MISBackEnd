@@ -18,15 +18,19 @@ authenticateUsers = function (req, res, next) {
         if (user) {
             user.checkPassword(userData.password, function (err, isMatch) {
                 if (err) {
+
                     res.status(500);
                     res.send({error:"internal server error"});
+
                     return next(err);
                 }
 
                 if (isMatch) {
+
                     const token = jwt.sign({ username: user.username,role:user.role,id:user._id }, SECRET_KEY);
+
                     res.status(200);
-                    res.send({token:token});
+                    res.send({ token: token });
 
                 } else {
                     res.status(403);
@@ -80,21 +84,21 @@ module.exports.authorizeUser = authorizeUser;
 
 
 
-userRoles={
-    guest:1,
-    admin:2
+userRoles = {
+    guest: 1,
+    admin: 2
 }
 
-accessLevels={
-    guest:userRoles.guest|userRoles.admin,
-    admin:userRoles.admin
+accessLevels = {
+    guest: userRoles.guest | userRoles.admin,
+    admin: userRoles.admin
 }
 
 
 
 
 
-module.exports.userRoles=userRoles;
+module.exports.userRoles = userRoles;
 
 
 

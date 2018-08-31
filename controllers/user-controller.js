@@ -1,5 +1,6 @@
 const User = require("../models/user");
 
+
 // function to add new users to the system
 
 
@@ -79,9 +80,11 @@ getUser = function (req, res, next) {
         if (user) {
             res.status(200);
             res.send(user);
+
         }
     });
 }
+
 
 module.exports.getUser = getUser;
 
@@ -113,6 +116,7 @@ updateUser = function (req, res, next) {
         if (user) {
             res.status(200);
             res.send(user);
+
         }
     });
 }
