@@ -12,13 +12,14 @@ authenticateUsers = function (req, res, next) {
         }
         if (!user) {
             res.status(403);
-            res.send({ errors: ["invalid username or password"] });
+            res.send({ error: "invalid username or password" });
         }
 
         if (user) {
             user.checkPassword(userData.password, function (err, isMatch) {
                 if (err) {
-                    res.send({errors:["internal server error"]});
+                    res.status(500);
+                    res.send({error:"internal server error"});
                     return next(err);
                 }
 
@@ -29,7 +30,7 @@ authenticateUsers = function (req, res, next) {
 
                 } else {
                     res.status(403);
-                    res.send({ errors: ["invalid username or password"] });
+                    res.send({ error: "invalid username or password" });
                 }
             });
         }
