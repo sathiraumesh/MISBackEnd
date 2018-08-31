@@ -4,13 +4,14 @@ const SALT_FACTOR = 10;
 
 const userSchema = new mongoose.Schema({
 
-    username: { type: String, required: true, unique: true },
-    password: { type: String, required: true, unique:true },
-    role: { type: Number, required: true, min: 0, max: 3, default: 0 },
+    username: { type: String },
+    password: { type: String  },
+    role: { type: String  },
     firstName: { type: String, default: "First Name" },
     lastName: { type: String, default: "Last Name" },
-    age: { type: Number, min: 0, max: 100, default: 0 },
+    dateOfBirth: { type: String,  default: "date" },
     email: { type: String, unique:true,default: "your@example.com" },
+    telePhoneNumber:{type:Number},
     createdAt: { type: Date, default: Date.now }
 
 });
