@@ -71,14 +71,14 @@ module.exports.getUsers = getUsers;
 
 getUser = function (req, res, next) {
     var id = req.params.id;
-    User.findById(id,{firstName:1,lastName:1,age:1,role:1,email:1}, function (err, user) {
+    User.findById(id, { firstName: 1, lastName: 1, age: 1, role: 1, email: 1 }, function (err, user) {
         if (err) {
             res.status(400);
             res.send({ error: "no user can be found" });
         }
         if (user) {
             res.status(200);
-            res.send( user );
+            res.send(user);
         }
     });
 }
@@ -87,7 +87,7 @@ module.exports.getUser = getUser;
 
 
 deleteUser = function (req, res, next) {
-    var userData = req.body;
+    var userData = req.params.id;
     User.deleteOne({ _id: userData._id }, function (err) {
         if (err) {
             res.status(500);
@@ -101,3 +101,20 @@ deleteUser = function (req, res, next) {
 }
 
 module.exports.deleteUser = deleteUser;
+
+updateUser = function (req, res, next) {
+    var id = req.params.id;
+    var userData = req.body;
+    User.findOneAndUpdate({ _id: id }, req.body, function (err, user) {
+        if (err) {
+            res.status(400);
+            res.send({ error: "internal server error" });
+        }
+        if (user) {
+            res.status(200);
+            res.send(user);
+        }
+    });
+}
+
+module.exports.updateUser = updateUser;
