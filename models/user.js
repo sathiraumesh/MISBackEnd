@@ -4,14 +4,17 @@ const SALT_FACTOR = 10;
 
 const userSchema = new mongoose.Schema({
 
-    username: { type: String },
-    password: { type: String  },
-    role: { type: String  },
+    // need to use validations 
+    username: { type: String, required: true, unique: true },
+    password: { type: String, required: true, unique: true },
+    role: { type: Number, required: true },
     firstName: { type: String, default: "First Name" },
     lastName: { type: String, default: "Last Name" },
-    dateOfBirth: { type: String,  default: "date" },
-    email: { type: String, unique:true,default: "your@example.com" },
-    telePhoneNumber:{type:Number},
+    dateOfBirth: { type: String, default: "Date" },
+    gender:{type:String},
+    email: { type: String, unique: true, required: true },
+    nic: { type: String, unique: true, required: true },
+    telePhoneNumber: { type: Number },
     createdAt: { type: Date, default: Date.now }
 
 });
@@ -23,7 +26,7 @@ userSchema.pre("save", function (done) {
         if (err) {
             return done(err);
         }
-        bcrypt.hash(user.password,salt, null, function (err, hashedPassword) {
+        bcrypt.hash(user.password, salt, null, function (err, hashedPassword) {
             console.log(user.password);
             console.log(hashedPassword);
             if (err) {

@@ -16,7 +16,9 @@
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
-    "mongoose": "^5.2.9"
+    "mongoose": "^5.2.9",
+    "nodemailer": "^4.6.8",
+    "nodemailer-smtp-transport": "^2.7.4"
   },
   "devDependencies": {
     "mocha": "^5.2.0",
