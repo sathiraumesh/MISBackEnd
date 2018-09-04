@@ -1,4 +1,6 @@
 const User = require("../models/user");
+const mail= require("../controllers/helpers/mailler");
+const credentialGenrator =require("./helpers/credential-genrator");
 
 
 // function to add new users to the system
@@ -7,6 +9,7 @@ const User = require("../models/user");
 addUser = function (req, res, next) {
 
     var userData = req.body;
+    userData.password= credentialGenrator.genratePassword();
     // User.findOne({username:userData.username},function(err,user){
     //     if(err){
     //         res.status(500);
@@ -40,6 +43,7 @@ addUser = function (req, res, next) {
             res.send(err);
         } else {
             res.status(201);
+            mail.sendUsercredentials(userData.username,userData.password);
             res.send({ success: "user created" });
         }
     });
@@ -72,7 +76,7 @@ module.exports.getUsers = getUsers;
 
 getUser = function (req, res, next) {
     var id = req.params.id;
-    User.findById(id, { firstName: 1, lastName: 1, dateOfBirth: 1, role: 1, email: 1 }, function (err, user) {
+    User.findById(id, { firstName: 1, lastName: 1, age: 1, email: 1, role: 1,dateOfBirth:1,gender:1,nic:1,telePhoneNumber:1  }, function (err, user) {
         if (err) {
             res.status(400);
             res.send({ error: "no user can be found" });

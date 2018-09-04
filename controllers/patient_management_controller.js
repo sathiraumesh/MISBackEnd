@@ -1,5 +1,7 @@
 const Patient = require("../models/patient");
 
+// funstions that is used to add a patient
+
 addPatient = function (req, res, next) {
 
     var patientData = req.body;
@@ -23,6 +25,9 @@ addPatient = function (req, res, next) {
     });
 }
 
+module.exports.addPatient = addPatient;
+// function that is used to get the patients information
+
 getPatient = function (req, res, next) {
     patientData = req.body;
     Patient.find({}, { _id: 1, patientName: 1, patientFaculty: 1, patientAge: 1 }, function (err, patient) {
@@ -40,5 +45,5 @@ getPatient = function (req, res, next) {
 }
 
 
-module.exports.addPatient = addPatient;
+
 module.exports.getPatient = getPatient;

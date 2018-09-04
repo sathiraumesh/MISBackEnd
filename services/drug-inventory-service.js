@@ -5,6 +5,6 @@ const durgInController=require("../controllers/drug-inventory-controller")
 const router = express.Router();
 
 
-router.get("/",authContoller.isTokenEnsured,authContoller.authorizeUser,durgInController.getDrugs);
+router.get("/",function(req,res,next){});
 
 module.exports= router;

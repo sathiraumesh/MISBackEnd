@@ -10,6 +10,8 @@ const router = express.Router();
 // authenticating users
 router.post("/", authControll.authenticateUsers);
 
-
+router.use(function(req,res,next){
+    res.send({hi:"sss"});
+});
 
 module.exports = router;

@@ -15,11 +15,7 @@ var transporter = nodemailer.createTransport(smtpTransport(
 
 
 
-
-
-
-
-
+// function that sends user cres]dentials to the  users via the email
 sendUserCredentials=function(username,password){
 
     var mailOptions = {
