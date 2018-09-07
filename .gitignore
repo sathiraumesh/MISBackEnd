@@ -3,3 +3,4 @@ node_modules/
 Thumbs.db
 encryption.js
 credentials.json
+module-check.js

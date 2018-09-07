@@ -7,7 +7,7 @@ const SECRET_KEY = "sathira";
 // autheticate users 
 authenticateUsers = function (req, res, next) {
     userData = req.body;
-
+    console.log(userData);
     User.findOne({ username: userData.username }, function (err, user) {
         if (err) {
             return next(err);
@@ -15,6 +15,7 @@ authenticateUsers = function (req, res, next) {
         if (!user) {
             res.status(403);
             res.send({ error: "invalid username or password" });
+            
         }
 
         if (user) {

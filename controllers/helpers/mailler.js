@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const smtpTransport = require("nodemailer-smtp-transport");
+
 const credentials = require("../../credentials.json");
 
 
@@ -20,7 +21,7 @@ sendUserCredentials=function(username,password){
 
     var mailOptions = {
         from: 'youremail@gmail.com',
-        to: 'sathiraumeshhhhhh@gmail.com',
+        to: 'sathiraumesh@gmail.com',
         subject: 'Sending Email using Node.js',
         text: `username ${username} password ${password}`
       };
@@ -39,3 +40,5 @@ transporter.sendMail(mailOptions, function(error, info){
 
 
 module.exports.sendUsercredentials=sendUserCredentials;
+
+ 
