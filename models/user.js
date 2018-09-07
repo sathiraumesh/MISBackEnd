@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     // need to use validations 
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true, unique: true },
-    role: { type: Number, required: true },
+    role: { type: String, required: true },
     firstName: { type: String, default: "First Name" },
     lastName: { type: String, default: "Last Name" },
     dateOfBirth: { type: String, default: "Date" },

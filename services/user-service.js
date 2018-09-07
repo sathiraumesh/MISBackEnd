@@ -11,10 +11,14 @@ router.get("/",userController.getUsers);
 router.get("/:id",userController.getUser);
 // api cal for creating a user
 router.post("/",userController.addUser);
+//api call for validating the emailaddress
+router.post("/email/check",userController.validateEmail);
 // api call for deleting a user
 router.delete("/:id",userController.deleteUser);
 // api call for updating the the users of the sytem
 router.put("/:id",userController.updateUser);
+
+
 
 
 
