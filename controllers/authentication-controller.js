@@ -23,14 +23,14 @@ authenticateUsers = function (req, res, next) {
                 if (err) {
 
                     res.status(500);
-                    res.send({error:"internal server error"});
+                    res.send({ error: "internal server error" });
 
                     return next(err);
                 }
 
                 if (isMatch) {
 
-                    const token = jwt.sign({ username: user.username,role:user.role,id:user._id }, SECRET_KEY);
+                    const token = jwt.sign({ username: user.username, role: user.role, id: user._id }, SECRET_KEY);
 
                     res.status(200);
                     res.send({ token: token });
