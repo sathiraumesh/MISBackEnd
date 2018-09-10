@@ -44,7 +44,7 @@ addUser = function (req, res, next) {
             res.send(err);
         } else {
             res.status(201);
-            console.log(userData);
+           
             mail.sendUsercredentials(userData.username, userData.password);
             res.send({ success: "user created" });
         }
@@ -97,7 +97,8 @@ module.exports.getUser = getUser;
 
 deleteUser = function (req, res, next) {
     var userData = req.params.id;
-    User.deleteOne({ _id: userData._id }, function (err) {
+    console.log(userData);
+    User.deleteOne({ _id: userData }, function (err) {
         if (err) {
             res.status(500);
             res.send({ errors: "internal server errors" });

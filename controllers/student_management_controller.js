@@ -37,6 +37,7 @@ getStudents = function (req, res, next) {
             //return;
         }
     });
+    
 }
 
 getStudent = function (req, res, next) {
@@ -57,6 +58,7 @@ getStudent = function (req, res, next) {
     });
 }
 
+
 updateStudent = function (req, res, next) {
     var studentData = req.body;
     var studentId = req.params.id;
@@ -74,6 +76,7 @@ updateStudent = function (req, res, next) {
         }
     });
 }
+
 
 deleteStudent = function (req, res, next) {
     var studentId = req.params.id;

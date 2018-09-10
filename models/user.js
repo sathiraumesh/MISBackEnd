@@ -20,15 +20,15 @@ const userSchema = new mongoose.Schema({
 });
 
 
-userSchema.pre("save", function (done) {
+userSchema.pre("save",  (done)=> {
     var user = this;
     bcrypt.genSalt(SALT_FACTOR, function (err, salt) {
         if (err) {
             return done(err);
         }
         bcrypt.hash(user.password, salt, null, function (err, hashedPassword) {
-            console.log(user.password);
-            console.log(hashedPassword);
+            // console.log(user.password);
+            console.log(user);
             if (err) {
                 return done(err);
             }
