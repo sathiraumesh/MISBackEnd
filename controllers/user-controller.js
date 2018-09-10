@@ -96,8 +96,9 @@ module.exports.getUser = getUser;
 
 
 deleteUser = function (req, res, next) {
-    var userData = req.params.id;
-    User.deleteOne({ _id: userData._id }, function (err) {
+    var userData = req.params;
+    console.log(userData);
+    User.deleteOne({ _id: userData.id }, function (err) {
         if (err) {
             res.status(500);
             res.send({ errors: "internal server errors" });
