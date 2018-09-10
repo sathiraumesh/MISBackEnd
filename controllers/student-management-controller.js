@@ -23,6 +23,8 @@ addStudent = function (req, res, next) {
     });
 }
 
+module.exports.addStudent = addStudent;
+
 getStudents = function (req, res, next) {
     //studentData = req.body;
     Student.find({}, { _id: 1, studentName: 1, studentFaculty: 1, studentAge: 1 }, function (err, student) {
@@ -37,8 +39,10 @@ getStudents = function (req, res, next) {
             //return;
         }
     });
-    
+
 }
+
+module.exports.getStudents = getStudents;
 
 getStudent = function (req, res, next) {
     var studentId = req.params.id;
@@ -58,6 +62,7 @@ getStudent = function (req, res, next) {
     });
 }
 
+module.exports.getStudent = getStudent;
 
 updateStudent = function (req, res, next) {
     var studentData = req.body;
@@ -77,6 +82,7 @@ updateStudent = function (req, res, next) {
     });
 }
 
+module.exports.updateStudent = updateStudent;
 
 deleteStudent = function (req, res, next) {
     var studentId = req.params.id;
@@ -93,9 +99,4 @@ deleteStudent = function (req, res, next) {
     });
 }
 
-
-module.exports.addStudent = addStudent;
-module.exports.getStudents = getStudents;
-module.exports.getStudent = getStudent;
-module.exports.updateStudent = updateStudent;
 module.exports.deleteStudent = deleteStudent;

@@ -44,6 +44,8 @@ const studentSchema = new Schema({
         }
     },
     studentDiet: { type: "String", required: false },
+    noOfInmated: { type: "Number", required: [true, 'Required.'] },
+    noOfRooms: { type: "Number", required: false },
 
 });
 
