@@ -19,12 +19,13 @@ authenticateUsers = function (req, res, next) {
         }
 
         if (user) {
+
             user.checkPassword(userData.password, function (err, isMatch) {
+                
                 if (err) {
 
                     res.status(500);
-                    res.send({ error: "internal server error" });
-
+                    res.send({ error: "invalid password" });
                     return next(err);
                 }
 
