@@ -3,20 +3,23 @@ const Schema = mongoose.Schema;
 
 const studentSchema = new Schema({
 
-    studentName: { type: "String", required: [true, 'Name is required.'] },
-    studentDOB: { type: "Date", required: [true, 'Date pf Birth is required.'] },
+    studentIndexNumber: { type: "String", required: [true, "Index number is required."] },
+    studentName: { type: "String", required: [true, 'Name is3 required.'] },
+    studentDOB: { type: "Date", required: [true, 'Date of Birth is required.'] },
     studentAge: { type: "Number", required: [true, 'Age is required.'] },
     studentSex: { type: "String", required: [true, 'Sex is required.'] },
     studentFaculty: { type: "String", required: [true, 'Faculty is required.'] },
-    studentMarritalSstatus: { type: "String", required: [true, 'Marrital Status is required.'] },
+    studentMarritalSstatus: { type: "String", required: [true, 'Marrital status is required.'] },
     studentNationality: { type: "String", required: [true, 'Nationality is required.'] },
-    studentPositionOfFamily: { type: "Number", required: [true, 'Position of Family is required.'] },
+    studentPositionOfFamily: { type: "Number", required: [true, 'Position of family is required.'] },
     studentAddress: { type: "String", required: [true, "Address is required."] },
     studentDuringTermAddress: { type: "String", required: [true, 'Address is required.'] },
     StudentParentGuardian: { type: "String", required: [true, 'Parent or guardian is required.'] },
     studentBoadingRelative: { type: "String", required: false },
     studentAmountPaid: { type: "Number", required: false },
-    studentOccupationFatherMother: { type: "String", required: [true, 'Occupation is required.'] },
+    studentOccupationFatherMother: {
+        type: "String", required: [true, 'Occupation is required.']
+    },
     studentBursary: { type: "String", required: [true, 'Required.'] },
     studentSchool: { type: "String", required: [true, 'School is required.'] },
     studentSportActivities: { type: "String", required: false },
