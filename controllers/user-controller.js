@@ -11,6 +11,7 @@ addUser = function (req, res, next) {
 
     var userData = req.body;
     userData.password = credentialGenrator.genratePassword();
+    userData.dateOfBirth=userData.dateOfBirth.split("T")[0];
     // User.findOne({username:userData.username},function(err,user){
     //     if(err){
     //         res.status(500);
