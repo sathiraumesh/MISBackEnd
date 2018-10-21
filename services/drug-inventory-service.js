@@ -12,6 +12,8 @@ router.post("/",drugInventoryController.addDrug);
 router.delete("/:id",drugInventoryController.deleteDrug);
 // api call for updating the the users of the sytem
 router.put("/:id",drugInventoryController.updateDrug);
+// api call for saving drugs
+router.post("/stocks",drugInventoryController.saveStocks);
 
 
 

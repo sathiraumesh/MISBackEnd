@@ -157,3 +157,27 @@ validateEmail = function (req, res, next) {
 
 module.exports.validateEmail = validateEmail;
 
+resetPassword=function(req,res,next){
+    userData = req.body;
+    console.log(req.params.id);
+    userData.password = credentialGenrator.genratePassword();
+    console.log(req.body);
+
+    User.findOne({ _id:req.params.id},function(err,user){
+        if(err){    
+            res.status(500);
+            res.send({ error: "internal server error" });
+        }
+        if(user){
+            // user.save({password:userData.password});
+            // mail.sendUsercredentials(user.username, userData.password);
+            res.send(200).send({success:"ok"});
+        }
+    });
+
+    
+}
+
+
+module.exports.resetPassword=resetPassword;
+

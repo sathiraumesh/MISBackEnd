@@ -1,5 +1,5 @@
 const Drug = require("../models/drug");
-
+const Stock = require("../models/stocks");
 // function for getting the entire drug list
 getDrugs = function (req, res, next) {
     Drug.find({}, { drugId: 1, drugName: 1, dosage: 1 ,quantity:1}, function (err, drugs) {
@@ -92,3 +92,32 @@ updateDrug = function (req, res, next) {
 }
 
 module.exports.updateDrug = updateDrug;
+
+saveStocks=function(req,res,next){
+    
+       
+         var stockList=req.body.items;
+         console.log(stockList);
+         var stock=new Stock({items:stockList});
+         stock.save(function(err){
+            if (err) {
+                res.status(404);
+                res.send(err)
+            } else {
+                stockList.forEach(function(item){
+                    var amount =parseInt(item.quantity);
+                    Drug.findOneAndUpdate({ drugId: item.drugId }, {$inc:{quantity:amount}}, function (err, drug) {
+                       
+                        
+                    });
+                });
+              res.send({success:"drugsupdated"});
+            }
+         });
+
+        
+       
+        
+}
+
+module.exports.saveStocks=saveStocks;

@@ -18,6 +18,8 @@ router.post("/email/check",userController.validateEmail);
 router.delete("/:id",userController.deleteUser);
 // api call for updating the the users of the sytem
 router.put("/:id",userController.updateUser);
+//api call for resteing the password
+router.put("/reset/:id",userController.resetPassword);
 
 
 
