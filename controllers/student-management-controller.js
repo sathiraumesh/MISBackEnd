@@ -19,6 +19,7 @@ addStudent = function (req, res, next) {
         newStudent.save();
         res.status(201);
         res.send(newStudent);
+        console.log(newStudent);
 
     });
 }
@@ -37,12 +38,12 @@ getStudents = function (req, res, next) {
             //return;
         }
     });
-    
+
 }
 
 getStudent = function (req, res, next) {
-    var studentId = req.params.id;
-    Student.findOne({ _id: studentId }, { studentName: 1, studentFaculty: 1, studentAge: 1 }, function (err, student) {
+    var studentIndexNumber = req.params.id;
+    Student.findOne({ _id: studentIndexNumber }, { studentName: 1, studentFaculty: 1, studentAge: 1 }, function (err, student) {
         if (err) {
             res.status(400);
             res.send({ errors: "Error when finding the student record." });
