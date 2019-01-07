@@ -27,7 +27,7 @@ module.exports.addStudent = addStudent;
 
 getStudents = function (req, res, next) {
     //studentData = req.body;
-    Student.find({}, { _id: 1, studentName: 1, studentFaculty: 1, studentAge: 1 }, function (err, student) {
+    Student.find({}, { _id: 1, studentRegistrationNumber: 1, studentName: 1, studentDOB: 1, studentAge: 1, gender: 1, studentFaculty: 1, marritalStatus: 1, studentNationality: 1, studentPositionOfFamily: 1, studentAddress: 1, studentTermAddress: 1, studentParentGuardian: 1, studentBoardingRelative: 1, studentAmountPaid: 1, studentOccupationFather: 1, studentOccupationMother: 1, studentBursary: 1, studentSchool: 1, gamesPlayed: 1 }, function (err, student) {
         if (err) {
             res.status(500);
             res.send({ errors: "Error when finding the student record." });
@@ -46,7 +46,7 @@ module.exports.getStudents = getStudents;
 
 getStudent = function (req, res, next) {
     var studentId = req.params.id;
-    Student.findOne({ _id: studentId }, { studentName: 1, studentFaculty: 1, studentAge: 1 }, function (err, student) {
+    Student.findOne({ _id: studentId }, { studentRegistrationNumber: 1, studentName: 1, studentDOB: 1, studentAge: 1, gender: 1, studentFaculty: 1, marritalStatus: 1, studentNationality: 1, studentPositionOfFamily: 1, studentAddress: 1, studentTermAddress: 1, studentParentGuardian: 1, studentBoardingRelative: 1, studentAmountPaid: 1, studentOccupationFather: 1, studentOccupationMother: 1, studentBursary: 1, studentSchool: 1, gamesPlayed: 1 }, function (err, student) {
         if (err) {
             res.status(400);
             res.send({ errors: "Error when finding the student record." });
